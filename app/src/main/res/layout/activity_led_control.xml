@@ -15,7 +15,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="Target Controller"
+        android:text="Rich's Target Controller"
         android:textColor="#ffffff"
         android:textSize="20dp" />
 
@@ -27,7 +27,7 @@
         android:layout_above="@+id/off"
         android:layout_alignLeft="@+id/off"
         android:layout_alignStart="@+id/off"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="11dp"
         android:background="@null"
         android:src="@drawable/on" />
 
@@ -62,15 +62,112 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <ImageButton
-        android:id="@+id/Target"
 
-        android:layout_width="200dip"
-        android:layout_height="200dip"
+    <RadioGroup
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"
-        android:background="@color/background_material_light"
-        android:src="@drawable/target" />
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_toRightOf="@+id/textView2"
+        android:id="@+id/radioGroup2">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/radioGroup2"
+            android:layout_alignStart="@+id/radioGroup2"
+            android:layout_alignTop="@+id/radioGroup2"
+            android:text="Target 1" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/radioButton1"
+            android:layout_alignStart="@+id/radioButton1"
+            android:layout_centerVertical="true"
+            android:text="Target 2" />
+
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/radioButton1"
+            android:layout_alignStart="@+id/radioButton1"
+            android:layout_below="@+id/radioButton2"
+            android:text="Target3" />
+
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/on"
+            android:layout_alignLeft="@+id/radioButton3"
+            android:layout_alignStart="@+id/radioButton3"
+            android:layout_marginBottom="13dp"
+            android:text="Target 4" />
+
+
+    </RadioGroup>
+
+    <RadioButton
+        android:id="@+id/radioButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/radioGroup2"
+        android:layout_marginLeft="48dp"
+        android:layout_marginStart="48dp"
+        android:text="Auto / Manual?" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/radioButton5"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="25dp"
+        android:text="Show TIme" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/radioGroup2"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignStart="@+id/textView6"
+        android:ems="10"
+        android:inputType="number"
+        android:text="Seconds" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:layout_below="@+id/editText"
+        android:layout_marginTop="40dp"
+        android:text="Hide Time" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView7"
+        android:layout_alignStart="@+id/textView7"
+        android:layout_below="@+id/textView7"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="Seconds" />
 
 </RelativeLayout>
