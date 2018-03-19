@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.app.ProgressDialog;
@@ -25,6 +26,8 @@ public class ledControl extends ActionBarActivity {
     ImageButton On, Off, Discnt, Abt, Target;
     String address = null;
     private ProgressDialog progress;
+    private CheckBox checkBox1,checkBox2;
+    double units = 1;
     BluetoothAdapter myBluetooth = null;
     BluetoothSocket btSocket = null;
     private boolean isBtConnected = false;
@@ -42,9 +45,15 @@ public class ledControl extends ActionBarActivity {
         //view of the ledControl
         setContentView(R.layout.activity_led_control);
 
+        //START OF MY CODE!!
+
+        //addListenerOnChkIos();
+
+
         //call the widgets
         On = (ImageButton)findViewById(R.id.on);
-        Target = (ImageButton)findViewById(R.id.Target);
+        checkBox1 = (CheckBox)findViewById(R.id.checkBox1);
+        checkBox2 = (CheckBox)findViewById(R.id.checkBox2);
         Off = (ImageButton)findViewById(R.id.off);
         Discnt = (ImageButton)findViewById(R.id.discnt);
         Abt = (ImageButton)findViewById(R.id.abt);
@@ -60,14 +69,14 @@ public class ledControl extends ActionBarActivity {
                 turnOnLed();      //method to turn on
             }
         });
-        Target.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                turnOnLed();      //method to turn on
-            }
-        });
+       // Target.setOnClickListener(new View.OnClickListener()
+       // {
+      //      @Override
+      //      public void onClick(View v)
+      //      {
+      //          turnOnLed();      //method to turn on
+      //      }
+     //   });
         Off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -77,6 +86,23 @@ public class ledControl extends ActionBarActivity {
         });
 
         Discnt.setOnClickListener(new View.OnClickListener()
+    {
+        @Override
+        public void onClick(View v)
+        {
+            Disconnect(); //close connection
+        }
+    });
+        checkBox1.setOnClickListener(new View.OnClickListener()
+    {
+        @Override
+        public void onClick(View v)
+        {
+            Disconnect(); //close connection
+        }
+    });
+
+        checkBox2.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -202,6 +228,52 @@ public class ledControl extends ActionBarActivity {
             }
             return null;
         }
+
+
+        private void checkBox1() {
+
+            //checkBox1 = (CheckBox) findViewById(R.id.checkBox);
+
+          //  checkBox1.setOnClickListener(new View.OnClickListener() {
+            if (btSocket!=null)
+            {
+                try
+                {
+                    btSocket.getOutputStream().write("T1".toString().getBytes()); // select target1
+                }
+                catch (IOException e)
+                {
+                    msg("Error");
+                }
+            }
+
+
+                }
+
+
+        private void checkBox2() {
+
+            //checkBox1 = (CheckBox) findViewById(R.id.checkBox);
+
+            //  checkBox1.setOnClickListener(new View.OnClickListener() {
+            if (btSocket!=null)
+            {
+                try
+                {
+                    btSocket.getOutputStream().write("T2".toString().getBytes()); // select target2
+                }
+                catch (IOException e)
+                {
+                    msg("Error");
+                }
+            }
+
+
+        }
+
+
+
+
         @Override
         protected void onPostExecute(Void result) //after the doInBackground, it checks if everything went fine
         {
@@ -219,5 +291,4 @@ public class ledControl extends ActionBarActivity {
             }
             progress.dismiss();
         }
-    }
-}
+    }}
