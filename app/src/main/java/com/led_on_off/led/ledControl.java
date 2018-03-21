@@ -185,9 +185,13 @@ public class ledControl extends ActionBarActivity {
         //  checkBox1.setOnClickListener(new View.OnClickListener() {
         if (btSocket!=null)
         {
-            try
-            {
-                btSocket.getOutputStream().write("2".toString().getBytes()); // select target1
+
+            try {
+                if (checkBox1.isChecked()) {
+                    btSocket.getOutputStream().write("2".toString().getBytes()); // select target3
+                } else {
+                    btSocket.getOutputStream().write("3".toString().getBytes()); // select target3
+                }
             }
             catch (IOException e)
             {
@@ -206,9 +210,12 @@ public class ledControl extends ActionBarActivity {
         //  checkBox1.setOnClickListener(new View.OnClickListener() {
         if (btSocket!=null)
         {
-            try
-            {
-                btSocket.getOutputStream().write("3".toString().getBytes()); // select target2
+            try {
+                if (checkBox2.isChecked()) {
+                    btSocket.getOutputStream().write("4".toString().getBytes()); // select target2
+                } else {
+                    btSocket.getOutputStream().write("5".toString().getBytes()); // select target2
+                }
             }
             catch (IOException e)
             {
@@ -226,9 +233,12 @@ public class ledControl extends ActionBarActivity {
         //  checkBox1.setOnClickListener(new View.OnClickListener() {
         if (btSocket!=null)
         {
-            try
-            {
-                btSocket.getOutputStream().write("4".toString().getBytes()); // select target2
+            try {
+                if (checkBox3.isChecked()) {
+                    btSocket.getOutputStream().write("6".toString().getBytes()); // select target3
+                } else {
+                    btSocket.getOutputStream().write("7".toString().getBytes()); // select target3
+                }
             }
             catch (IOException e)
             {
@@ -246,9 +256,12 @@ public class ledControl extends ActionBarActivity {
         //  checkBox1.setOnClickListener(new View.OnClickListener() {
         if (btSocket!=null)
         {
-            try
-            {
-                btSocket.getOutputStream().write("5".toString().getBytes()); // select target2
+            try {
+                if (checkBox4.isChecked()) {
+                    btSocket.getOutputStream().write("1".toString().getBytes()); // select target2
+                } else {
+                    btSocket.getOutputStream().write("0".toString().getBytes()); // select target2
+                }
             }
             catch (IOException e)
             {
