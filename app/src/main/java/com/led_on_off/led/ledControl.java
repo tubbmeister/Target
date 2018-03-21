@@ -23,10 +23,11 @@ import java.util.UUID;
 public class ledControl extends ActionBarActivity {
 
    // Button btnOn, btnOff, btnDis;
-    ImageButton On, Off, Discnt, Abt, Target;
+    ImageButton On, Off, Discnt, Abt;
+
     String address = null;
     private ProgressDialog progress;
-    private CheckBox checkBox1,checkBox2;
+    CheckBox checkBox1,checkBox2,checkBox3,checkBox4;
     double units = 1;
     BluetoothAdapter myBluetooth = null;
     BluetoothSocket btSocket = null;
@@ -54,6 +55,8 @@ public class ledControl extends ActionBarActivity {
         On = (ImageButton)findViewById(R.id.on);
         checkBox1 = (CheckBox)findViewById(R.id.checkBox1);
         checkBox2 = (CheckBox)findViewById(R.id.checkBox2);
+        checkBox3 = (CheckBox)findViewById(R.id.checkBox3);
+        checkBox4 = (CheckBox)findViewById(R.id.checkBox4);
         Off = (ImageButton)findViewById(R.id.off);
         Discnt = (ImageButton)findViewById(R.id.discnt);
         Abt = (ImageButton)findViewById(R.id.abt);
@@ -98,7 +101,7 @@ public class ledControl extends ActionBarActivity {
         @Override
         public void onClick(View v)
         {
-            Disconnect(); //close connection
+            checkBox1(); //close connection
         }
     });
 
@@ -107,7 +110,23 @@ public class ledControl extends ActionBarActivity {
             @Override
             public void onClick(View v)
             {
-                Disconnect(); //close connection
+                checkBox2(); //close connection
+            }
+        });
+        checkBox3.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                checkBox3(); //close connection
+            }
+        });
+        checkBox4.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                checkBox4(); //close connection
             }
         });
 
@@ -157,6 +176,87 @@ public class ledControl extends ActionBarActivity {
                 msg("Error");
             }
         }
+    }
+
+    private void checkBox1() {
+
+        //checkBox1 = (CheckBox) findViewById(R.id.checkBox);
+
+        //  checkBox1.setOnClickListener(new View.OnClickListener() {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("2".toString().getBytes()); // select target1
+            }
+            catch (IOException e)
+            {
+                msg("Error");
+            }
+        }
+
+
+    }
+
+
+    private void checkBox2() {
+
+        //checkBox1 = (CheckBox) findViewById(R.id.checkBox);
+
+        //  checkBox1.setOnClickListener(new View.OnClickListener() {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("3".toString().getBytes()); // select target2
+            }
+            catch (IOException e)
+            {
+                msg("Error");
+            }
+        }
+
+
+    }
+
+    private void checkBox3() {
+
+        //checkBox1 = (CheckBox) findViewById(R.id.checkBox);
+
+        //  checkBox1.setOnClickListener(new View.OnClickListener() {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("4".toString().getBytes()); // select target2
+            }
+            catch (IOException e)
+            {
+                msg("Error");
+            }
+        }
+
+
+    }
+
+    private void checkBox4() {
+
+        //checkBox1 = (CheckBox) findViewById(R.id.checkBox);
+
+        //  checkBox1.setOnClickListener(new View.OnClickListener() {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write("5".toString().getBytes()); // select target2
+            }
+            catch (IOException e)
+            {
+                msg("Error");
+            }
+        }
+
+
     }
 
     // fast way to call Toast
@@ -230,46 +330,7 @@ public class ledControl extends ActionBarActivity {
         }
 
 
-        private void checkBox1() {
 
-            //checkBox1 = (CheckBox) findViewById(R.id.checkBox);
-
-          //  checkBox1.setOnClickListener(new View.OnClickListener() {
-            if (btSocket!=null)
-            {
-                try
-                {
-                    btSocket.getOutputStream().write("T1".toString().getBytes()); // select target1
-                }
-                catch (IOException e)
-                {
-                    msg("Error");
-                }
-            }
-
-
-                }
-
-
-        private void checkBox2() {
-
-            //checkBox1 = (CheckBox) findViewById(R.id.checkBox);
-
-            //  checkBox1.setOnClickListener(new View.OnClickListener() {
-            if (btSocket!=null)
-            {
-                try
-                {
-                    btSocket.getOutputStream().write("T2".toString().getBytes()); // select target2
-                }
-                catch (IOException e)
-                {
-                    msg("Error");
-                }
-            }
-
-
-        }
 
 
 

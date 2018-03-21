@@ -6,21 +6,22 @@
     android:orientation="vertical"
     android:background="#da4c3f">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="Target Controller"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="35dp" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="252dp"
         android:id="@+id/imageView2"
         android:src="@drawable/splah"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="100dp"
         android:layout_gravity="center_horizontal" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Target Controller"
-        android:textSize="35dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/textView3"
-        android:layout_gravity="center_horizontal" />
 </LinearLayout>
