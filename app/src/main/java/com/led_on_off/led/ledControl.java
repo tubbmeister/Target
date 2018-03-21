@@ -1,5 +1,7 @@
 package com.led_on_off.led;
 
+import android.content.Context;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,8 +10,12 @@ import android.view.MenuItem;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -19,6 +25,8 @@ import android.os.AsyncTask;
 import java.io.IOException;
 import java.util.UUID;
 
+import static java.lang.Thread.sleep;
+
 
 public class ledControl extends ActionBarActivity {
 
@@ -26,8 +34,12 @@ public class ledControl extends ActionBarActivity {
     ImageButton On, Off, Discnt, Abt;
 
     String address = null;
+    EditText editText,editText2;
+    String timeUp, timeDown;
+    int timer;
     private ProgressDialog progress;
     CheckBox checkBox1,checkBox2,checkBox3,checkBox4;
+    RadioButton radioButton5,radioButton6;
     double units = 1;
     BluetoothAdapter myBluetooth = null;
     BluetoothSocket btSocket = null;
@@ -53,6 +65,10 @@ public class ledControl extends ActionBarActivity {
 
         //call the widgets
         On = (ImageButton)findViewById(R.id.on);
+        radioButton5 = (RadioButton)findViewById(R.id.radioButton5);
+        radioButton6 = (RadioButton)findViewById(R.id.radioButton6);
+        editText = (EditText) findViewById(R.id.editText);
+        editText2 = (EditText) findViewById(R.id.editText2);
         checkBox1 = (CheckBox)findViewById(R.id.checkBox1);
         checkBox2 = (CheckBox)findViewById(R.id.checkBox2);
         checkBox3 = (CheckBox)findViewById(R.id.checkBox3);
@@ -61,15 +77,85 @@ public class ledControl extends ActionBarActivity {
         Discnt = (ImageButton)findViewById(R.id.discnt);
         Abt = (ImageButton)findViewById(R.id.abt);
 
+        final EditText editText = (EditText) findViewById(R.id.editText);
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    editText.setText("", TextView.BufferType.EDITABLE); //clears text on press
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+
+
+
+                    //================ Hide Virtual Key Board When  Clicking==================//
+
+
+//======== Hide Virtual Keyboard =====================//
+
+                }
+            }
+        });
+        final EditText editText2 = (EditText) findViewById(R.id.editText2);
+        editText2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    editText2.setText("", TextView.BufferType.EDITABLE); //clears text on press
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+
+
+
+                    //================ Hide Virtual Key Board When  Clicking==================//
+
+
+//======== Hide Virtual Keyboard =====================//
+
+                }
+            }
+
+        });
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+
+
+
+        //================ Hide Virtual Key Board When  Clicking==================//
+
+
+//======== Hide Virtual Keyboard =====================//
+
+
         new ConnectBT().execute(); //Call the class to connect
 
         //commands to be sent to bluetooth
-        On.setOnClickListener(new View.OnClickListener()
+        On.setOnClickListener(new View.OnClickListener() //run auto programme
         {
             @Override
             public void onClick(View v)
-            {
-                turnOnLed();      //method to turn on
+            {if (radioButton5.isChecked()){
+                //On.setVisibility(View.VISIBLE);
+                timeUp=editText.getText().toString();
+                timer= Integer.parseInt(timeUp); // convert string to int
+                timer=(timer * 1000);
+                turnOnLed();
+
+                try {
+
+                    Thread.sleep(timer);
+
+                } catch (InterruptedException ex) {
+
+                    System.out.println("Error! :(");
+
+                }
+            }
+                turnOffLed();      //method to turn off
+
             }
         });
        // Target.setOnClickListener(new View.OnClickListener()

@@ -4,7 +4,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1d4851"
+    android:background="@android:color/holo_green_dark"
     tools:context="com.led_on_off.led.ledControl">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_marginStart="85dp"
         android:layout_marginTop="10dp"
         android:text="Rich's Target Controller"
-        android:textColor="#ffffff"
+        android:textColor="@color/abc_search_url_text_pressed"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,24 +24,26 @@
         android:id="@+id/on"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="11dp"
+
+        android:layout_marginTop="24dp"
         android:background="@null"
         android:src="@drawable/on"
-        app:layout_constraintBottom_toTopOf="@+id/off"
-        app:layout_constraintStart_toStartOf="@+id/off" />
+
+        app:layout_constraintEnd_toEndOf="@+id/checkBox4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/off"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox4" />
 
     <ImageButton
         android:id="@+id/off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="31dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginStart="96dp"
         android:background="@null"
         android:src="@drawable/red"
-        app:layout_constraintBottom_toTopOf="@+id/discnt"
-        app:layout_constraintEnd_toEndOf="@+id/abt"
-        app:layout_constraintStart_toStartOf="@+id/discnt" />
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/on"
+        app:layout_constraintTop_toBottomOf="@+id/on"
+        tools:layout_editor_absoluteX="208dp" />
 
     <ImageButton
         android:id="@+id/discnt"
@@ -70,8 +72,8 @@
         android:layout_height="32dp"
         android:layout_marginEnd="24dp"
 
-        android:text="Target 1"
         android:layout_marginTop="65dp"
+        android:text="Target 1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,8 +85,7 @@
         android:text="Target 2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/checkBox1"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox1"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox1" />
 
 
     <CheckBox
@@ -97,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/checkBox1"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox2"/>
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
 
 
     <CheckBox
@@ -180,6 +181,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:checked="true"
             android:text="   Auto" />
 
         <RadioButton
@@ -192,12 +194,6 @@
             app:layout_constraintTop_toBottomOf="@+id/radioButton5" />
 
     </RadioGroup>
-
-
-
-
-
-
 
 
 </android.support.constraint.ConstraintLayout>
